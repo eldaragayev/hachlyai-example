@@ -18,8 +18,10 @@ export default function HachlyAI() {
     document.body.appendChild(script);
 
     function executeWidgetLoad() {
-      if ((window as any).hachlyAI && (window as any).hachlyAI.load) {
-        (window as any).hachlyAI
+      // @ts-expect-error: window.hachlyAI is dynamically added by external script
+      if (window.hachlyAI && window.hachlyAI.load) {
+        // @ts-expect-error: window.hachlyAI is dynamically added by external script
+        window.hachlyAI
           .load("67428114a7841f7adf166af6")
           .catch((error: Error) => {
             console.error("Error executing load function:", error);
